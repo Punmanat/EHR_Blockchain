@@ -1,6 +1,5 @@
 const Web3 = require("web3")
 const bcrypt = require("bcrypt");
-const { create } = require("../models/user");
 const web3 = new Web3()
 const createAccount = (password)=>{
     const account = web3.eth.accounts.wallet.create(1)
