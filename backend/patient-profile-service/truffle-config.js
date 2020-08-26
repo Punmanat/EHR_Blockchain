@@ -42,11 +42,12 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    development: {
+    node1: {
      host: "127.0.0.1",     // Localhost (default: none)
      port: 22000,            // Standard Ethereum port (default: none)
      network_id: "*",   
-     gasPrice:0    // Any network (default: none)
+     gasPrice:0, // Any network (default: none),
+     type: "quorum"
     },
 
     // Another network with more advanced options...
