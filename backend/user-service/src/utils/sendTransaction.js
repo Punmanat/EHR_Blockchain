@@ -30,11 +30,11 @@ const sendPublicTransaction = async (account, _tx) => {
   }
 };
 
-const sendPrivateTransaction = async (account, _tx) => {
+const sendPrivateTransaction = async (account, _tx, privateFrom, privateFor) => {
   try {
     const txHash = await rawTransactionManager.storeRawRequest(
       _tx.data,
-      "BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo="
+      privateFrom
     );
     const nonce = await web3.eth.getTransactionCount(account.address)
     const tx = {
@@ -47,6 +47,7 @@ const sendPrivateTransaction = async (account, _tx) => {
     };
     tx.data = `0x${txHash}`;
 
+    console.log({tx})
     const signedTx = await web3.eth.accounts.signTransaction(
       tx,
       account.privateKey
@@ -56,7 +57,7 @@ const sendPrivateTransaction = async (account, _tx) => {
     const privateTxHex = `0x${privateTx.toString("hex")}`;
     const receipt = await web3.eth.sendRawPrivateTransaction(
       privateTxHex,
-      {privateFor:["BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo="]}
+      {privateFor}
     );
     return receipt;
   } catch (error) {
