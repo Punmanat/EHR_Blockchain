@@ -36,4 +36,7 @@ contract PatientProfile {
     function getRevision(address owner) public view returns (uint256) {
         return addressToProfile[owner].revision;
     }
+    function checkValid(address owner) public view returns (bool){
+        return addressToProfile[owner].valid;
+    }
 }
