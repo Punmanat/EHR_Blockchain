@@ -11,7 +11,6 @@ const addDocuments = async (_jsonData) => {
 
 const readDocuments = async (_cid) => {
   const node = await IPFS.create();
-  console.log({_cid,from:"function"})
   const stream = node.cat(_cid);
   let data = "";
   for await (const chunk of stream) {

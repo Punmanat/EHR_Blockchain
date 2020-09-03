@@ -1,4 +1,5 @@
 contract PatientProfile {
+
     struct Profile {
         string personalId;
         address owner;
@@ -7,8 +8,10 @@ contract PatientProfile {
         uint256 revision;
         string[] whitelist;
     }
+
     mapping(address => Profile) addressToProfile;
     mapping(string => Profile) personalIdToProfile;
+
     function getProfileById(string memory personalId) public view returns (bytes32) {
         if (personalIdToProfile[personalId].valid) {
             return personalIdToProfile[personalId]._documentHash;
@@ -23,6 +26,7 @@ contract PatientProfile {
             return "";
         }
     }
+
     function setProfile(
         string memory personalId,
         address owner,
@@ -45,6 +49,7 @@ contract PatientProfile {
         addressToProfile[owner].whitelist.push(id);
         personalIdToProfile[addressToProfile[owner].personalId].whitelist.push(id);
     }
+
     function checkWhiteList(
         string memory personalId,
         string memory id
@@ -56,10 +61,12 @@ contract PatientProfile {
         }
         return false;
     }
+
     function removeProfile(address owner) public {
         addressToProfile[owner].valid = false;
         personalIdToProfile[addressToProfile[owner].personalId].valid = false;
     }
+
     function getRevision(address owner) public view returns (uint256) {
         return addressToProfile[owner].revision;
     }
