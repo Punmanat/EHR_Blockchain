@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "migrate1": "truffle migrate -f 1 --to 1 --network node1",
+    "migrate2": "truffle migrate -f 2 --to 2 --network node2"
   },
   "dependencies": {
     "@truffle/contract": "^4.2.19",

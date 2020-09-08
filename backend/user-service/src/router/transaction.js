@@ -18,11 +18,17 @@ router.post("/send", auth, async (req, res) => {
 
 router.post("/sendPrivate", auth, async (req, res) => {
   try {
+    const tx = {
+      data: req.body.data,
+      to: req.body.to,
+    };
     const receipt = await sendPrivateTransaction(
       req.userAccount,
-      req.body,
-      "BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo=",
-      ["BULeR8JyUWhiuuCMU/HLA0Q5pzkYT+cHII3ZKBey3Bo="]
+      tx,
+      req.body.privateFrom,
+      req.body.privateFor,
+      req.body.url,
+      req.body.tessera
     );
     res.send({ receipt });
   } catch (error) {

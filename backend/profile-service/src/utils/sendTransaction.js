@@ -1,9 +1,13 @@
 const axios = require("axios");
 
-module.exports = async (to, data, token) => {
+module.exports = async (to, data, token, privateFrom, privateFor, url, tessera) => {
   const rawTx = {
     data,
     to,
+    privateFrom,
+    privateFor,
+    url,
+    tessera
   };
 
   const headers = {
