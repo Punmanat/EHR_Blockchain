@@ -2,3 +2,12 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@200&display=swap");
+$body-font-family: "Sarabun", sans-serif;
+.v-application {
+  font-family: $body-font-family !important;
+}
+
+.btn-w{
+  width:60%;
+}

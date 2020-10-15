@@ -1,6 +1,6 @@
 <template>
   <v-app light>
-    <Appbar></Appbar>
+    <AppbarPractitioner></AppbarPractitioner>
     <v-main>
       <v-container style="padding:30px">
         <nuxt />
@@ -12,7 +12,8 @@
         Made with
         <v-btn icon color="pink">
           <v-icon>mdi-heart</v-icon>
-        </v-btn>by developer
+        </v-btn>
+        by developer
       </div>
     </v-footer>
   </v-app>
