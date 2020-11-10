@@ -6690,11 +6690,11 @@
       "events": {},
       "links": {},
       "address": "0x1932c48b2bF8102Ba33B4A6B545C32236e342f34",
-      "transactionHash": "0x1f5e85d7b386b7ffc0fdf3fc49c40535a5114c17deb413bcec02af450f94c436"
+      "transactionHash": "0x102828d26342872120480803d2bdb25fcbe42f24b1da6888f30debf69e4442d9"
     }
   },
   "schemaVersion": "3.2.2",
-  "updatedAt": "2020-09-03T07:34:39.489Z",
+  "updatedAt": "2020-11-02T14:03:44.674Z",
   "networkType": "quorum",
   "devdoc": {
     "methods": {}

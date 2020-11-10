@@ -1,7 +1,7 @@
 const Web3 = require("web3");
 const quorumjs = require("quorum-js");
 
-const sendPublicTransaction = async (account, _tx) => {
+const sendPublicTransaction = async (account, _tx, url) => {
   try {
     const tx = {
       from: account.address,
@@ -9,6 +9,8 @@ const sendPublicTransaction = async (account, _tx) => {
       gas: "7900000",
       ..._tx,
     };
+    const provider = new Web3.providers.HttpProvider(url);
+    const web3 = new Web3(provider);
     const signedTx = await web3.eth.accounts.signTransaction(
       tx,
       account.privateKey

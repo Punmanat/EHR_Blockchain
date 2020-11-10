@@ -9,7 +9,12 @@ const auth = require("../middleware/auth");
 // Need to authenticate
 router.post("/send", auth, async (req, res) => {
   try {
-    const receipt = await sendPublicTransaction(req.userAccount, req.body);
+    const tx = {
+      data: req.body.data,
+      to: req.body.to,
+    };
+    const receipt = await sendPublicTransaction(req.userAccount, tx, req.body.url);
+    console.log({receipt})
     res.send({ receipt });
   } catch (error) {
     res.status(401).send({ error });

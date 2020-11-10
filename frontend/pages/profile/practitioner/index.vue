@@ -81,7 +81,7 @@
               v-bind="attrs"
               v-on="on"
               large
-              @click="medical()"
+              @click="history()"
               class="btn-w my-3"
               rounded
             >ค้นหาประวัติการรักษา</v-btn>
@@ -143,18 +143,18 @@ export default {
   },
   methods: {
     find() {
-      //this.dialog = true;
+      // this.dialog = true;
       this.$router.push("/profile/practitioner/view");
     },
     encouter() {
-      // this.dialog2 = true;
+      // this.dialog = true;
       const personalId = "1100277362911";
       this.$router.push({
         path: `/profile/practitioner/encouter/${personalId}`,
       });
     },
-    medical() {
-      this.$router.push("/medical");
+    history() {
+      this.$router.push("/history");
     },
     allergy() {
       this.$router.push("/allergy");

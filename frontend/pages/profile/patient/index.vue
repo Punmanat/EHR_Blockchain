@@ -64,7 +64,7 @@
       </v-card>
     </v-dialog>
     <div class="text-center mt-3">
-      <v-btn color="primary" rounded large class="box-btn btn-w">ดูประวัติการรักษา</v-btn>
+      <v-btn color="primary" rounded large class="box-btn btn-w" @click="goToHistory()">ดูประวัติการรักษา</v-btn>
     </div>
   </div>
 </template>
@@ -85,6 +85,9 @@ export default {
     async copy(text) {
       navigator.clipboard.writeText(text);
     },
+    goToHistory(){
+      this.$router.push('/history')
+    }
   },
 };
 </script>

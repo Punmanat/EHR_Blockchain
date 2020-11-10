@@ -23,7 +23,7 @@ router.post("/login", async (req, res)=>{
 // use to verify user if user login
 router.get("/verify" ,auth,async (req, res)=>{
     try {
-        res.send({user:req.user,walletAddress:unlockAccount(req.user.keyStore, req.user.username)[0].address})
+        res.send({username:req.user.username,role:req.user.role,walletAddress:unlockAccount(req.user.keyStore, req.user.username)[0].address})
     } catch (error) {
     }
 })
