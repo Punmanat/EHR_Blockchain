@@ -1,6 +1,8 @@
 <template>
   <v-form>
     <!-- <h3 class="purple--text darken-1" >กรุณากรอกข้อมูลในช่องว่าง</h3> -->
+    <v-text-field label="ชื่อผู้ใช้งาน"></v-text-field>
+    <v-text-field label="รหัสผ่าน" type="password"></v-text-field>
     <v-text-field label="เลขบัตรประจำตัวประชาชน"></v-text-field>
     <v-text-field label="ชื่อ"></v-text-field>
     <v-text-field label="นามสกุล"></v-text-field>

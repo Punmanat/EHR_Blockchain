@@ -1,7 +1,7 @@
 <template>
   <div class="box-container">
     <div class="box-header">
-      <p class="text-center" style="font-size:1.5em;margin-bottom:0;padding:5px">ข้อมูลส่วนตัว</p>
+      <p class="text-center" style="font-size:1.5em;margin-bottom:0;padding:5px">ข้อมูลผู้ป่วย</p>
     </div>
     <v-card class="box-content">
       <v-card-text>

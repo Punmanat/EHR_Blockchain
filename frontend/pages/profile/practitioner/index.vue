@@ -143,15 +143,14 @@ export default {
   },
   methods: {
     find() {
-      // this.dialog = true;
       this.$router.push("/profile/practitioner/view");
     },
     encouter() {
-      // this.dialog = true;
       const personalId = "1100277362911";
-      this.$router.push({
-        path: `/profile/practitioner/encouter/${personalId}`,
-      });
+      this.dialog = true;
+      // this.$router.push({
+      //   path: `/profile/practitioner/encouter/${personalId}`,
+      // });
     },
     history() {
       this.$router.push("/history");

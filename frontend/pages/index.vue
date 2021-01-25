@@ -39,7 +39,7 @@ export default {
       this.$store.commit("profile/add", "Hello");
     },
     login() {
-      const role = "practitione";
+      const role = "practitioner";
       if (role == "practitioner") {
         return this.$router.push("/profile/practitioner");
       }
