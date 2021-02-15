@@ -1,2 +1,3 @@
 /backend/user-service/node_modules
 /backend/profile-service/node_modules
+/backend/health-check-service/node_modules
