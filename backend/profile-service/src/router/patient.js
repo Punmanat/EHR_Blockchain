@@ -40,6 +40,7 @@ router.post("/", auth, async (req, res) => {
       url,
       tessera
     );
+    console.log({receipt : receipt.data})
     res.send(receipt.data);
   } catch (error) {
     console.log({error})
@@ -74,6 +75,7 @@ router.get("/", auth, async (req, res) => {
     data = JSON.parse(data);
     res.send({ data });
   } catch (error) {
+    console.log({error})
     res.status(401).send({ error: "Please authenticate" });
   }
 });

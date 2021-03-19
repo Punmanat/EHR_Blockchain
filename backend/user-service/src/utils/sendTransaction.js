@@ -68,7 +68,6 @@ const sendPrivateTransaction = async (
     });
     return receipt;
   } catch (error) {
-    console.log({ error });
     return { error };
   }
 };

@@ -9,6 +9,7 @@ router.post("/", async (req, res)=>{
         await user.save()
         res.status(201).send({status:"User created success !!", username:user.username})
     } catch (error) {
+        console.log({error})
         res.status(400).send(error)
     }
 

@@ -16,7 +16,6 @@ module.exports = async (to, data, token, privateFrom, privateFor, url, tessera) 
       Authorization: `Bearer ${token}`,
     },
   };
-
   const receipt = await axios.post(
     "http://localhost:3503/api/transaction/sendPrivate",
     JSON.stringify(rawTx),
