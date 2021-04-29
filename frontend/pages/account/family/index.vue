@@ -3,11 +3,15 @@
     <v-form>
       <v-card v-for="i in amounts" :key="i" class="my-3">
         <v-card-text>
-          <v-select :items="menu" v-model="relation[i]" label="ความสัมพันธ์"></v-select>
+          <v-select
+            :items="menu"
+            v-model="relation[i]"
+            label="ความสัมพันธ์"
+          ></v-select>
           <v-text-field v-model="names[i]" label="ชื่อ"></v-text-field>
           <v-text-field v-model="telecoms[i]" label="เบอร์โทร"></v-text-field>
           <v-text-field v-model="addresses[i]" label="ที่อยู่"></v-text-field>
-          <v-select :items="sex" v-model="genders[i]"  label="เพศ"></v-select>
+          <v-select :items="sex" v-model="genders[i]" label="เพศ"></v-select>
         </v-card-text>
       </v-card>
       <br />
@@ -32,15 +36,13 @@ export default {
   data() {
     return {
       relationship: [],
-      relation:[],
-      names:[],
-      telecoms:[],
-      addresses:[],
-      genders:[],
+      relation: [],
+      names: [],
+      telecoms: [],
+      addresses: [],
+      genders: [],
       amounts: [0],
-       sex:[
-          "ชาย","หญิง","อื่นๆ"
-      ],
+      sex: ["ชาย", "หญิง", "อื่นๆ"],
       menu: ["พ่อ", "แม่", "ญาติ"],
     };
   },
@@ -51,12 +53,28 @@ export default {
     removeRelation() {
       this.amounts.pop();
     },
-    confirm(){
-     this.amounts.forEach(i=>{
-       const data = {"relationship":this.relation[i], "name":this.names[i],"telecom":this.telecoms[i]}
-       this.relationship.push(data)
-     })
-    }
+    async confirm() {
+      let patientContact = {
+        contacts: [],
+      };
+      this.amounts.forEach((i) => {
+        let data = {
+          relationship: this.relation[i],
+          name: this.names[i],
+          telecom: this.telecoms[i],
+          address: this.addresses[i],
+          gender: this.genders[i],
+        };
+        patientContact.contacts.push(data);
+      });
+       const status = await this.$store.dispatch(
+          "user/updateProfileContact",
+          patientContact
+        );
+        if (status) {
+          return this.$router.push("/profile/patient");
+        }
+    },
   },
 };
 </script>

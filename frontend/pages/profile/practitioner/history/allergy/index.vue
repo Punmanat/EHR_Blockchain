@@ -28,8 +28,8 @@
 
 <script>
 export default {
-  async created() {
-    await this.$store.dispatch("user/getAllergyIntolerances", this.$store.state.user.profile.personalId);
+  layout: "practitioner",
+  created() {
     this.allergyIntolerances = this.$store.state.user.allergyIntolerances;
     if (this.allergyIntolerances) {
       this.alert = false;

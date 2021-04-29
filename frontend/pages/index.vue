@@ -1,5 +1,8 @@
 <template>
   <div class="d-flex flex-column justify-center">
+    <v-alert dense type="error" v-show="alert"
+      >username or password incorrect</v-alert
+    >
     <v-img
       rounded
       style="border-radius: 20px"
@@ -39,19 +42,27 @@ export default {
       username: "",
       password: "",
       show: false,
+      alert: false,
     };
   },
   methods: {
-    login() {
-      this.$store.dispatch("user/login", {
+    async login() {
+      const status = await this.$store.dispatch("user/login", {
         username: this.username,
         password: this.password,
       });
-      const role = this.$store.state.user.role
-      if (role == "Patient") {
-        return this.$router.push("/profile/patient");
+      if (status) {
+        const role = this.$store.state.user.role;
+        if (role == "Patient") {
+          return this.$router.push("/profile/patient");
+        }
+        this.$router.push("/profile/practitioner");
+      } else {
+        this.alert = true
+        setInterval(() => {
+          this.alert = false;
+        }, 5000);
       }
-      this.$router.push("/profile/practitioner");
     },
     register() {
       this.$router.push("/register");

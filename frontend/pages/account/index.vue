@@ -2,11 +2,20 @@
   <div>
     <div>
       <!-- <h3 class="purple--text darken-1" >กรุณากรอกข้อมูลในช่องว่าง</h3> -->
-      <v-text-field label="เลขบัตรประจำตัวประชาชน" :value="patient.personalId"></v-text-field>
-      <v-text-field label="ชื่อ" :value="patient.fullname"></v-text-field>
-      <v-text-field label="นามสกุล" :value="patient.lastname"></v-text-field>
-      <v-text-field label="เบอร์โทร" :value="patient.telecom"></v-text-field>
+      <v-text-field
+        label="เลขบัตรประจำตัวประชาชน"
+        v-model="personalId"
+      ></v-text-field>
+      <v-text-field label="ชื่อ" v-model="firstName"></v-text-field>
+      <v-text-field label="นามสกุล" v-model="lastName"></v-text-field>
+      <v-text-field label="เบอร์โทร" v-model="telecom"></v-text-field>
       <v-select :items="sex" label="เพศ" v-model="gender"></v-select>
+      <v-textarea
+        solo
+        name="input-7-4"
+        label="ที่อยู่"
+        v-model="address"
+      ></v-textarea>
       <v-menu
         v-model="menu"
         :close-on-content-click="false"
@@ -24,13 +33,31 @@
             v-on="on"
           ></v-text-field>
         </template>
-        <v-date-picker v-model="date" no-title @input="menu = false"></v-date-picker>
+        <v-date-picker
+          v-model="date"
+          no-title
+          @input="menu = false"
+        ></v-date-picker>
       </v-menu>
-       <div class="text-center">
-        <v-btn rounded color="primary" large style="width:80%;" @click="familyContact()">กรอกประวัติครอบครัว</v-btn>
+      <div class="text-center">
+        <v-btn
+          rounded
+          color="primary"
+          large
+          style="width: 80%"
+          @click="familyContact()"
+          >กรอกประวัติครอบครัว</v-btn
+        >
       </div>
-      <div class="text-center mt-3" >
-        <v-btn rounded color="primary" large style="width:80%;" @click="register()">อัพเดทข้อมูล</v-btn>
+      <div class="text-center mt-3">
+        <v-btn
+          rounded
+          color="primary"
+          large
+          style="width: 80%"
+          @click="update()"
+          >อัพเดทข้อมูล</v-btn
+        >
       </div>
     </div>
   </div>
@@ -38,16 +65,26 @@
 
 <script>
 export default {
+  created() {
+    this.profile = this.$store.state.user.profile;
+    this.personalId = this.profile.personalId;
+    this.firstName = this.profile.firstName;
+    this.lastName = this.profile.lastName;
+    this.telecom = this.profile.telecom;
+    this.birthDate = this.profile.birthDate;
+    this.address = this.profile.address;
+    this.gender = this.profile.gender;
+  },
   data() {
     return {
-      patient: {
-        personalId: "1100748212755",
-        fullname: "Punmanat",
-        lastname: "Nunthasunti",
-        telecom: "0681712221",
-        gender: "ชาย",
-        birthdate: "24/04/1999",
-      },
+      profile: {},
+      personalId: "",
+      firstName: "",
+      lastName: "",
+      telecom: "",
+      birthDate: "",
+      gender: "",
+      address: "",
       date: new Date().toISOString().substr(0, 10),
       dateFormatted: this.formatDate(new Date().toISOString().substr(0, 10)),
       menu: false,
@@ -60,26 +97,52 @@ export default {
       const [year, month, day] = date.split("-");
       return `${day}/${month}/${year}`;
     },
-    register() {
-      this.$router.push("/profile/patient");
+    async update() {
+      if (
+        this.personalId != this.profile.personalId ||
+        this.firstName != this.profile.firstName ||
+        this.lastName != this.profile.lastName ||
+        this.telecom != this.profile.telecom ||
+        this.gender != this.profile.gender ||
+        this.birthDate != this.profile.birthDate ||
+        this.address != this.profile.address
+      ) {
+        let update_profile = {
+          personalId: this.personalId,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          telecom: this.telecom,
+          gender: this.gender,
+          birthDate: this.birthDate,
+          address: this.address,
+        };
+        const status = await this.$store.dispatch(
+          "user/updateProfile",
+          update_profile
+        );
+        if (status) {
+          return this.$router.push("/profile/patient");
+        }
+      }
     },
-    familyContact(){
+    familyContact() {
       this.$router.push("/account/family");
-    }
+    },
   },
   computed: {
     computedDateFormatted() {
-      if (this.patient) {
-        return this.patient.birthdate;
+      if (this.birthDate) {
+        return this.birthDate;
       }
       return this.formatDate(this.date);
     },
-    gender(){
-        if(this.patient){
-            return this.patient.gender
-        }
-        return ""
-    }
+  },
+  watch: {
+    date(val) {
+      if (this.birthDate != val) {
+        this.birthDate = this.formatDate(val);
+      }
+    },
   },
 };
 </script>

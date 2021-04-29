@@ -170,6 +170,7 @@ patient profile
 //set whitelist from id
 router.post("/whitelist/:id", auth, async (req, res) => {
   try {
+    console.log("In")
     const { PatientProfileInstance } = await createInstance(url);
     const instance = PatientProfileInstance;
     const options = {
@@ -203,6 +204,7 @@ router.post("/whitelist/:id", auth, async (req, res) => {
 
     res.send(receipt.data);
   } catch (error) {
+    console.log({error})
     res.status(401).send({ error: "Please authenticate" });
   }
 });

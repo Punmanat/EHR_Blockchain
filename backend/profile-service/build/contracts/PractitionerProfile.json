@@ -3104,11 +3104,11 @@
       "events": {},
       "links": {},
       "address": "0x341ed42CDfB13B897a198cD1C87ddf070e25E6a1",
-      "transactionHash": "0xdda064041dcff6cf4f645124c22829ad55230d0e4579e42c4a4015451dc042a0"
+      "transactionHash": "0xd2c555fc810726fc7d137f2646c8341ea9b0ab5feb8639619db5a3232615f471"
     }
   },
   "schemaVersion": "3.2.2",
-  "updatedAt": "2020-09-03T07:34:54.650Z",
+  "updatedAt": "2021-04-22T14:36:16.483Z",
   "networkType": "quorum",
   "devdoc": {
     "methods": {}

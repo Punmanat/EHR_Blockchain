@@ -39,6 +39,7 @@ router.post("/", auth, async (req, res) => {
     }
     res.status(201).send(receipt.data);
   } catch (error) {
+    console.log({ error });
     res.status(503).send();
   }
 });
@@ -92,12 +93,12 @@ router.get("/all/:personalId", auth, async (req, res) => {
     });
     for (const h of ipfsHash) {
       let _data = await readDocuments(h);
-      _data = JSON.parse(_data)
+      _data = JSON.parse(_data);
       data.push(_data);
     }
     if (data.length == 0) {
       return res.status(404).send();
-  }
+    }
     res.status(200).send(data);
   } catch (error) {
     res.status(503).send();

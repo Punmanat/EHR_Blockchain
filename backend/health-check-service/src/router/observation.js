@@ -72,6 +72,7 @@ router.get("/:observationId", auth, async (req, res) => {
     observation = JSON.parse(observation);
     res.status(200).send(observation);
   } catch (error) {
+
     res.status(503).send();
   }
 });

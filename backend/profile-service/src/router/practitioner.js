@@ -40,6 +40,7 @@ router.post("/", auth, async (req, res) => {
     );
     res.send(receipt.data);
   } catch (error) {
+    console.log({error})
     res.status(401).send({ error: "Please authenticate" });
   }
 });

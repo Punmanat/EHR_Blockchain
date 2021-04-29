@@ -30,8 +30,8 @@ export const actions = {
       gender: registeredData.sex,
       birthDate: registeredData.birthDate
     };
-    const response1 = await axios.post(endpoint[2], data, { headers });
-    if (response.data && response1.data) {
+    const reciept = await axios.post(endpoint[2], data, { headers });
+    if (response.data && reciept.data) {
       return true;
     }
     return false;

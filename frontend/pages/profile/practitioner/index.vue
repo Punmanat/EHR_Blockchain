@@ -1,161 +1,174 @@
 <template>
   <div>
+    <v-alert type="error" v-show="alert"
+      >คุณไม่มีสิทธิ์ดูข้อมูลส่วนตัว กรุณาให้ผู้ป่วยอนุญาติสิทธิ์</v-alert
+    >
     <div class="d-flex flex-row justify-space-around text-center">
       <div>
         <h3>ชื่อ</h3>
-        <p>นานา พันธ์</p>
+        <p>{{ profile.name }}</p>
       </div>
       <div>
         <h3>เลขประจำตัว</h3>
-        <p>123712312</p>
+        <p>{{ profile.id }}</p>
       </div>
     </div>
     <v-form>
-      <v-text-field label="เลขบัตรประจำตัวประชาชนผู้ป่วย"></v-text-field>
-      <!-- Dialog -->
-      <v-dialog v-model="dialog" persistent max-width="290">
-        <template v-slot:activator="{ on, attrs }">
-          <div class="text-center">
-            <v-btn
-              v-show="role=='practitioner/doctor'"
-              color="primary"
-              dark
-              v-bind="attrs"
-              v-on="on"
-              large
-              class="box-btn btn-w"
-              @click="find()"
-              rounded
-            >ค้นหาประวัติผู้ป่วย</v-btn>
-          </div>
-        </template>
-        <v-card>
-          <v-card-title class="headline">เกิดปัญหา</v-card-title>
-          <v-card-text>คุณไม่มีสิทธิ์ดูข้อมูลส่วนตัว</v-card-text>
-          <v-card-text>
-            <span style="color:red" class="mr-1">หมายเหตุ</span>กรุณาให้ผู้ป่วยอนุญาติสิทธิ์
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text @click="dialog = false">ยืนยัน</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <!-- Dialog -->
-      <v-dialog v-model="dialog" persistent max-width="290">
-        <template v-slot:activator="{ on, attrs }">
-          <div class="text-center">
-            <v-btn
-              v-show="role=='practitioner/nurse'"
-              color="primary"
-              dark
-              v-bind="attrs"
-              v-on="on"
-              large
-              class="box-btn btn-w"
-              @click="encouter()"
-              rounded
-            >กรอกประวัติเบื้องต้น</v-btn>
-          </div>
-        </template>
-        <v-card>
-          <v-card-title class="headline">เกิดปัญหา</v-card-title>
-          <v-card-text>คุณไม่มีสิทธิ์ดูข้อมูลส่วนตัว</v-card-text>
-          <v-card-text>
-            <span style="color:red" class="mr-1">หมายเหตุ</span>กรุณาให้ผู้ป่วยอนุญาติสิทธิ์
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text @click="dialog = false">ยืนยัน</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <!-- Dialog -->
-      <v-dialog v-model="dialog" persistent max-width="290">
-        <template v-slot:activator="{ on, attrs }">
-          <div class="text-center">
-            <v-btn
-              v-show="role=='practitioner/doctor'"
-              color="primary"
-              dark
-              v-bind="attrs"
-              v-on="on"
-              large
-              @click="history()"
-              class="btn-w my-3"
-              rounded
-            >ค้นหาประวัติการรักษา</v-btn>
-          </div>
-        </template>
-        <v-card>
-          <v-card-title class="headline">เกิดปัญหา</v-card-title>
-          <v-card-text>คุณไม่มีสิทธิ์ดูข้อมูลส่วนตัว</v-card-text>
-          <v-card-text>
-            <span style="color:red" class="mr-1">หมายเหตุ</span>กรุณาให้ผู้ป่วยอนุญาติสิทธิ์
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text @click="dialog = false">ยืนยัน</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-      <!-- Dialog -->
-      <v-dialog v-model="dialog" persistent max-width="290">
-        <template v-slot:activator="{ on, attrs }">
-          <div class="text-center">
-            <v-btn
-              v-show="role=='practitioner/doctor'"
-              color="primary"
-              dark
-              v-bind="attrs"
-              v-on="on"
-              large
-              @click="allergy()"
-              class="btn-w"
-              rounded
-            >ค้นหาประวัติการแพ้</v-btn>
-          </div>
-        </template>
-        <v-card>
-          <v-card-title class="headline">เกิดปัญหา</v-card-title>
-          <v-card-text>คุณไม่มีสิทธิ์ดูข้อมูลส่วนตัว</v-card-text>
-          <v-card-text>
-            <span style="color:red" class="mr-1">หมายเหตุ</span>กรุณาให้ผู้ป่วยอนุญาติสิทธิ์
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="green darken-1" text @click="dialog = false">ยืนยัน</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      <v-text-field
+        label="เลขบัตรประจำตัวประชาชนผู้ป่วย"
+        v-model="personalId"
+      ></v-text-field>
     </v-form>
+    <div class="text-center">
+      <v-btn
+        v-show="role == 'Nurse'"
+        color="primary"
+        dark
+        large
+        class="box-btn btn-w"
+        @click="encouter()"
+        rounded
+        >กรอกประวัติเบื้องต้น</v-btn
+      >
+    </div>
+    <div class="text-center">
+      <v-btn
+        v-show="role == 'Doctor'"
+        color="primary"
+        dark
+        large
+        class="box-btn btn-w"
+        @click="find()"
+        rounded
+        >ค้นหาประวัติผู้ป่วย</v-btn
+      >
+    </div>
+    <div class="text-center">
+      <v-btn
+        v-show="role == 'Doctor' || 'Nurse'"
+        color="primary"
+        dark
+        large
+        class="box-btn btn-w my-3"
+        @click="createAllergy()"
+        rounded
+        >กรอกประวัติการแพ้</v-btn
+      >
+    </div>
+    <div class="text-center">
+      <v-btn
+        v-show="role == 'Doctor'"
+        color="primary"
+        dark
+        large
+        @click="history()"
+        class="btn-w mb-3"
+        rounded
+        >ค้นหาประวัติการรักษา</v-btn
+      >
+    </div>
+    <div class="text-center">
+      <v-btn
+        v-show="role == 'Doctor'"
+        color="primary"
+        dark
+        large
+        @click="allergy()"
+        class="btn-w"
+        rounded
+        >ค้นหาประวัติการแพ้</v-btn
+      >
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   layout: "practitioner",
+  created() {
+    this.role = this.$store.getters["user/getRole"];
+    this.profile = this.$store.getters["user/getProfile"];
+  },
   data() {
     return {
-      dialog: false,
-      role: "practitioner/doctor",
+      alert: false,
+      role: "",
+      profile: {},
+      personalId: "",
     };
   },
   methods: {
-    find() {
-      this.$router.push("/profile/practitioner/view");
+    async find() {
+      const whitelist = await this.$store.dispatch(
+        "user/checkWhitelist",
+        this.personalId
+      );
+      if (whitelist) {
+        await this.$store.dispatch("user/getEncounter", this.personalId);
+        await this.$store.dispatch(
+          "user/getObservation",
+          this.$store.state.user.encounter.id
+        );
+        return this.$router.push("/profile/practitioner/view");
+      }
+      this.alert = true;
+      setInterval(() => {
+        this.alert = false;
+      }, 3000);
     },
-    encouter() {
-      const personalId = "1100277362911";
-      this.dialog = true;
-      // this.$router.push({
-      //   path: `/profile/practitioner/encouter/${personalId}`,
-      // });
+    async createAllergy() {
+      const status = await this.$store.dispatch(
+        "user/checkWhitelist",
+        this.personalId
+      );
+      if (status) {
+        return this.$router.push({
+          path: '/profile/practitioner/allergy',
+        });
+      }
+      this.alert = true;
+      setInterval(() => {
+        this.alert = false;
+      }, 3000);
     },
-    history() {
-      this.$router.push("/history");
+    async encouter() {
+      const status = await this.$store.dispatch(
+        "user/checkWhitelist",
+        this.personalId
+      );
+      if (status) {
+        return this.$router.push({
+          path: `/profile/practitioner/encouter/${this.personalId}`,
+        });
+      }
+      this.alert = true;
+      setInterval(() => {
+        this.alert = false;
+      }, 3000);
     },
-    allergy() {
+    async history() {
+       const whitelist = await this.$store.dispatch(
+        "user/checkWhitelist",
+        this.personalId
+      );
+      if (whitelist) {
+        await this.$store.dispatch("user/getEncounters", this.personalId);
+        return this.$router.push("/profile/practitioner/history");
+      }
+      this.alert = true;
+      setInterval(() => {
+        this.alert = false;
+      }, 3000);
+    },
+    async allergy() {
+      const whitelist = await this.$store.dispatch(
+        "user/checkWhitelist",
+        this.personalId
+      );
+      if (whitelist) {
+        await this.$store.dispatch("user/getAllergyIntolerances", this.personalId);
+        return this.$router.push("/profile/practitioner/history/allergy");
+      }
       this.$router.push("/allergy");
     },
   },

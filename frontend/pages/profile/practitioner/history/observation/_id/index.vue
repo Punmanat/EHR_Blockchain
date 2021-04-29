@@ -24,14 +24,15 @@
 
 <script>
 export default {
+  layout: "practitioner",
   async created() {
-    this.observations = []
+    this.observations = [];
     const status = await this.$store.dispatch(
       "user/getObservation",
-    this.$route.params.id
+      this.$route.params.id
     );
     if (!status) {
-      return this.not_found = true;
+      return (this.not_found = true);
     }
     this.observations = this.$store.state.user.observations;
   },

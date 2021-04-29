@@ -29,6 +29,7 @@
 
 <script>
 export default {
+  layout: "practitioner",
   data: () => ({
     color: "#7fa4db",
     encounters: [],
@@ -36,12 +37,11 @@ export default {
   methods: {
     goToObservation(encounterId) {
       this.$router.push({
-        path: `/history/observation/${encounterId}`,
+        path: `/profile/practitioner/history/observation/${encounterId}`,
       });
     },
   },
   async created() {
-    await this.$store.dispatch("user/getEncounters", this.$store.state.user.profile.personalId);
     this.encounters = this.$store.state.user.encounters;
   },
 };

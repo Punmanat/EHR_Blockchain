@@ -9,27 +9,27 @@
           <v-list-item-title class="headline mb-2">
             <span class="text-decoration-underline">เลขบัตรประชาชน</span>
           </v-list-item-title>
-          <v-list-item-subtitle>1002929211233</v-list-item-subtitle>
+          <v-list-item-subtitle>{{profile.personalId}}</v-list-item-subtitle>
           <!--  -->
           <v-list-item-title class="headline my-4">
             <span class="text-decoration-underline">ชื่อ</span>
           </v-list-item-title>
-          <v-list-item-subtitle>ปุณมนัส นันสันติ</v-list-item-subtitle>
+          <v-list-item-subtitle>{{profile.firstName}} {{profile.lastName}}</v-list-item-subtitle>
           <!--  -->
           <v-list-item-title class="headline my-4">
             <span class="text-decoration-underline">เพศ</span>
           </v-list-item-title>
-          <v-list-item-subtitle>ชาย</v-list-item-subtitle>
+          <v-list-item-subtitle>{{profile.gender}}</v-list-item-subtitle>
           <!--  -->
           <v-list-item-title class="headline my-4">
             <span class="text-decoration-underline">วันเกิด</span>
           </v-list-item-title>
-          <v-list-item-subtitle>23/04/1999</v-list-item-subtitle>
+          <v-list-item-subtitle>{{profile.birthDate}}</v-list-item-subtitle>
           <!--  -->
           <v-list-item-title class="headline my-4">
             <span class="text-decoration-underline">ที่อยู่</span>
           </v-list-item-title>
-          <v-list-item-subtitle>431/3-4</v-list-item-subtitle>
+          <v-list-item-subtitle>{{profile.address}}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-card>
@@ -75,10 +75,16 @@ export default {
   validate() {
     return true;
   },
+  created(){
+    this.profile = this.$store.state.user.profile
+    this.walletAddress = this.$store.state.user.walletAddress
+    // console.log(this.$store.state.user.profile)
+  },
   data() {
     return {
       dialog: false,
       walletAddress: "0x123asdkj2193012xck213",
+      profile:{}
     };
   },
   methods: {

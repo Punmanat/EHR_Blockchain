@@ -12,7 +12,7 @@
         Made with
         <v-btn icon color="pink">
           <v-icon>mdi-heart</v-icon>
-        </v-btn>by developer
+        </v-btn>by developer 2021
       </div>
     </v-footer>
   </v-app>
