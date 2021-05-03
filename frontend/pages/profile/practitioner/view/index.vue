@@ -11,8 +11,8 @@
     <v-card class="box-content">
       <v-card-text>
         <div class="text-center">
-          <h3>ชื่อ</h3>
-          <p style="font-size: 1.25em">
+          <h3 class="headline">ชื่อ</h3>
+          <p class="title">
             {{ patientProfile.firstName }} {{ patientProfile.lastName }}
           </p>
           <hr />
@@ -20,39 +20,39 @@
         <br />
         <div class="d-flex flex-row justify-space-around text-center">
           <div>
-            <h3>ส่วนสูง</h3>
-            <p style="font-size: 1.25em">{{ height }}</p>
+            <h3 class="headline">ส่วนสูง</h3>
+            <p class="title">{{ height }}</p>
           </div>
           <div>
-            <h3>น้ำหนัก</h3>
-            <p style="font-size: 1.25em">{{ weight }}</p>
+            <h3 class="headline">น้ำหนัก</h3>
+            <p class="title">{{ weight }}</p>
           </div>
         </div>
         <hr />
         <br />
         <div class="d-flex flex-row justify-center text-center">
           <div>
-            <h3>ความดัน</h3>
-            <p style="font-size: 1.25em">{{ pressure }}</p>
+            <h3 class="headline">ความดัน</h3>
+            <p class="title" >{{ pressure }}</p>
           </div>
         </div>
         <hr />
         <br />
         <div class="text-center">
-          <h3>อาการ</h3>
-          <p style="font-size: 1.25em">{{ encounter.reasonCode }}</p>
+          <h3 class="headline">อาการ</h3>
+          <p class="title">{{ encounter.reasonCode }}</p>
         </div>
         <hr />
         <br />
         <div class="text-center">
-          <h3>ตรวจล่าสุด</h3>
-          <p style="font-size: 1.25em">{{ encounter.issued }}</p>
+          <h3 class="headline">ตรวจล่าสุด</h3>
+          <p class="title">{{ encounter.issued }}</p>
         </div>
       </v-card-text>
     </v-card>
     <div class="text-center mt-3">
       <v-btn
-        color="primary"
+        color="#dadf74"
         rounded
         @click="observer()"
         large
@@ -61,7 +61,7 @@
       >
     </div>
     <div class="text-center mt-3">
-      <v-btn color="primary" rounded @click="back()" large class="box-btn btn-w"
+      <v-btn color="#aabba5" rounded @click="back()" large class="box-btn btn-w"
         >ย้อนกลับ</v-btn
       >
     </div>
@@ -121,7 +121,7 @@ export default {
   position: relative;
   width: 40%;
   height: auto;
-  background-color: #6a1b9a;
+  background-color: #4d838c;
   border-radius: 15px;
   color: white;
 }

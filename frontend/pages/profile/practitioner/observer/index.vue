@@ -18,11 +18,11 @@
       ></v-text-field>
       <v-text-field label="value" v-model="value"></v-text-field>
       <div class="text-center">
-        <v-btn color="primary" rounded class="btn-w" large @click="confirm()"
+        <v-btn color="#dadf74" rounded class="btn-w" large @click="confirm()"
           >ยืนยัน</v-btn
         >
         <v-btn
-          color="primary"
+          color="#aabba5"
           rounded
           @click="back()"
           class="box-btn mt-3 btn-w"

@@ -19,13 +19,13 @@
         <v-btn fab dark color="red" @click="removeRelation()">
           <v-icon>mdi-minus</v-icon>
         </v-btn>
-        <v-btn fab dark color="indigo" @click="addRelation()">
+        <v-btn fab dark color="#4dadbd" @click="addRelation()">
           <v-icon dark>mdi-plus</v-icon>
         </v-btn>
       </div>
       <br />
       <div class="text-center">
-        <v-btn rounded color="primary" block @click="confirm()">ยืนยัน</v-btn>
+        <v-btn rounded color="#dadf74" block @click="confirm()"><span class="body-1" style="color:#4F3928">ยืนยัน</span></v-btn>
       </div>
     </v-form>
   </div>

@@ -9,27 +9,27 @@
           <v-list-item-title class="headline mb-2">
             <span class="text-decoration-underline">เลขบัตรประชาชน</span>
           </v-list-item-title>
-          <v-list-item-subtitle>{{profile.personalId}}</v-list-item-subtitle>
+          <v-list-item-subtitle class="headline">{{profile.personalId}}</v-list-item-subtitle>
           <!--  -->
           <v-list-item-title class="headline my-4">
             <span class="text-decoration-underline">ชื่อ</span>
           </v-list-item-title>
-          <v-list-item-subtitle>{{profile.firstName}} {{profile.lastName}}</v-list-item-subtitle>
+          <v-list-item-subtitle class="headline">{{profile.firstName}} {{profile.lastName}}</v-list-item-subtitle>
           <!--  -->
           <v-list-item-title class="headline my-4">
             <span class="text-decoration-underline">เพศ</span>
           </v-list-item-title>
-          <v-list-item-subtitle>{{profile.gender}}</v-list-item-subtitle>
+          <v-list-item-subtitle class="headline">{{profile.gender}}</v-list-item-subtitle>
           <!--  -->
           <v-list-item-title class="headline my-4">
             <span class="text-decoration-underline">วันเกิด</span>
           </v-list-item-title>
-          <v-list-item-subtitle>{{profile.birthDate}}</v-list-item-subtitle>
+          <v-list-item-subtitle class="headline">{{profile.birthDate}}</v-list-item-subtitle>
           <!--  -->
           <v-list-item-title class="headline my-4">
             <span class="text-decoration-underline">ที่อยู่</span>
           </v-list-item-title>
-          <v-list-item-subtitle>{{profile.address}}</v-list-item-subtitle>
+          <v-list-item-subtitle class="headline">{{profile.address}}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-card>
@@ -39,14 +39,14 @@
       <template v-slot:activator="{ on, attrs }">
         <div class="text-center">
           <v-btn
-            color="primary"
+            color="#dadf74"
             dark
             v-bind="attrs"
             v-on="on"
             large
             rounded
             class="box-btn btn-w"
-          >ดูเลขบัญชี</v-btn>
+          ><span style='color:black'>ดูเลขบัญชี</span></v-btn>
         </div>
       </template>
       <v-card>
@@ -64,7 +64,7 @@
       </v-card>
     </v-dialog>
     <div class="text-center mt-3">
-      <v-btn color="primary" rounded large class="box-btn btn-w" @click="goToHistory()">ดูประวัติการรักษา</v-btn>
+      <v-btn color="#AABBA5" rounded large class="box-btn btn-w" @click="goToHistory()"><span style='color:black'>ดูประวัติการรักษา</span></v-btn>
     </div>
   </div>
 </template>
@@ -108,7 +108,7 @@ export default {
   position: relative;
   width: 40%;
   height: auto;
-  background-color: #6a1b9a;
+  background-color: #4D838C;
   border-top-right-radius: 15px;
   color: white;
 }

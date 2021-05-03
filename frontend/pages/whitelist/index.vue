@@ -10,7 +10,7 @@
       <div class="text-center">
         <v-btn
           rounded
-          color="primary"
+          color="#dadf74"
           large
           style="width: 80%"
           @click="confirm()"

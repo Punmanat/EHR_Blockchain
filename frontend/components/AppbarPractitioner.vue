@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- appbar -->
-    <v-app-bar color="blue accent-4" dense dark app>
+    <v-app-bar color="#4dadbd" dense dark app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>
         <nuxt-link
@@ -16,7 +16,7 @@
 
     <!-- navigator-drawer -->
     <v-navigation-drawer
-      class="blue accent-4"
+      color="#4dadbd"
       dark
       fixed
       temporary

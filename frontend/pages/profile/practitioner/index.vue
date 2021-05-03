@@ -22,61 +22,61 @@
     <div class="text-center">
       <v-btn
         v-show="role == 'Nurse'"
-        color="primary"
+        color="#dadf74"
         dark
         large
-        class="box-btn btn-w"
+        class="box-btn btn-w title"
         @click="encouter()"
         rounded
-        >กรอกประวัติเบื้องต้น</v-btn
+        ><span style='color:#4a4343'>กรอกประวัติเบื้องต้น</span></v-btn
       >
     </div>
     <div class="text-center">
       <v-btn
         v-show="role == 'Doctor'"
-        color="primary"
+        color="#dadf74"
         dark
         large
-        class="box-btn btn-w"
+        class="box-btn btn-w title"
         @click="find()"
         rounded
-        >ค้นหาประวัติผู้ป่วย</v-btn
+        ><span style='color:#4a4343'>ค้นหาประวัติผู้ป่วย</span></v-btn
       >
     </div>
     <div class="text-center">
       <v-btn
         v-show="role == 'Doctor' || 'Nurse'"
-        color="primary"
+        color="#aabba5"
         dark
         large
-        class="box-btn btn-w my-3"
+        class="box-btn btn-w my-3 title"
         @click="createAllergy()"
         rounded
-        >กรอกประวัติการแพ้</v-btn
+        ><span style='color:#4a4343'>กรอกประวัติการแพ้</span></v-btn
       >
     </div>
     <div class="text-center">
       <v-btn
         v-show="role == 'Doctor'"
-        color="primary"
+        color="#add9d8"
         dark
         large
         @click="history()"
-        class="btn-w mb-3"
+        class="btn-w mb-3 title"
         rounded
-        >ค้นหาประวัติการรักษา</v-btn
+        ><span style='color:#4a4343'>ค้นหาประวัติการรักษา</span></v-btn
       >
     </div>
     <div class="text-center">
       <v-btn
         v-show="role == 'Doctor'"
-        color="primary"
+        color="#94b8ce"
         dark
         large
         @click="allergy()"
-        class="btn-w"
+        class="btn-w title"
         rounded
-        >ค้นหาประวัติการแพ้</v-btn
+        ><span style='color:#4a4343'>ค้นหาประวัติการแพ้</span></v-btn
       >
     </div>
   </div>
@@ -158,7 +158,7 @@ export default {
       this.alert = true;
       setInterval(() => {
         this.alert = false;
-      }, 3000);
+      }, 5000);
     },
     async allergy() {
       const whitelist = await this.$store.dispatch(

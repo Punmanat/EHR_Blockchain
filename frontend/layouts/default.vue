@@ -6,13 +6,13 @@
         <nuxt />
       </v-container>
     </v-main>
-    <v-footer class="blue accent-4" dark>
+    <v-footer color="#4dadbd" dark>
       <v-spacer></v-spacer>
       <div>
-        Made with
-        <v-btn icon color="pink">
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>by developer 2021
+        <v-btn icon>
+          <v-icon>mdi-copyright</v-icon>
+        </v-btn>
+        Copyright 2020-2021
       </div>
     </v-footer>
   </v-app>

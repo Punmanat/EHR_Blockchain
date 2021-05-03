@@ -42,7 +42,7 @@
       <div class="text-center">
         <v-btn
           rounded
-          color="primary"
+          color="#dadf74"
           large
           style="width: 80%"
           @click="familyContact()"
@@ -52,7 +52,7 @@
       <div class="text-center mt-3">
         <v-btn
           rounded
-          color="primary"
+          color="#AABBA5"
           large
           style="width: 80%"
           @click="update()"

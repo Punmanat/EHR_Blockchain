@@ -20,7 +20,7 @@
       ></v-text-field>
       <br />
       <div class="text-center">
-        <v-btn rounded color="primary" large style="width: 80%" @click="login()"
+        <v-btn rounded color="#dadf74" large style="width: 80%;color:#4F3928;" @click="login()"
           >เข้าสู่ระบบ</v-btn
         >
         <br />

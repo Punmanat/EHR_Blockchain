@@ -1,12 +1,10 @@
 const axios = require("axios");
-import createPersistedState from "vuex-persistedstate";
 const endpoint = [
   "http://localhost:8111/api/patient",
   "http://localhost:3503/api/auth",
   "http://localhost:8111/api/practitioner",
   "http://localhost:4000/api/health"
 ];
-export const plugins = [createPersistedState];
 export const state = () => ({
   username: "",
   token: "",

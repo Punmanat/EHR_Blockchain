@@ -1,25 +1,20 @@
 <template>
   <div>
     <!-- appbar -->
-    <v-app-bar color="blue accent-4" dense dark app>
+    <v-app-bar color="#4dadbd" dense dark app>
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <nuxt-link
-          to="/profile/patient"
-          style="text-decoration: none; color: white"
-          >EHR</nuxt-link
+        <v-button
+          text
+          @click="toProfile()"
+          style="text-decoration: none; color: white; cursor: pointer"
+          >EHR</v-button
         >
       </v-toolbar-title>
     </v-app-bar>
 
     <!-- navigator-drawer -->
-    <v-navigation-drawer
-      class="blue accent-4"
-      dark
-      fixed
-      temporary
-      v-model="drawer"
-    >
+    <v-navigation-drawer color="#4dadbd" dark fixed temporary v-model="drawer">
       <v-list>
         <v-list-item v-for="item in items" :key="item.title" link>
           <v-list-item-icon>
@@ -48,8 +43,12 @@
 
 <script>
 export default {
+  mounted() {
+    this.role = this.$store.state.user.role;
+  },
   data() {
     return {
+      role: "",
       drawer: false,
       items: [
         { title: "จัดการผู้ใช้", icon: "mdi-account-circle", link: "/account" },
@@ -68,6 +67,9 @@ export default {
     };
   },
   methods: {
+    toProfile() {
+      this.$router.push("/profile/patient");
+    },
     logout() {
       this.$store.commit("user/logout");
       this.$router.push("/");

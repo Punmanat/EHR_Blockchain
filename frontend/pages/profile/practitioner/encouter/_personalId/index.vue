@@ -39,8 +39,8 @@
         outlined
         v-model="reasonCode"
       ></v-textarea>
-      <v-btn block color="primary" rounded @click="confirm()">ยืนยัน</v-btn>
-      <v-btn block color="primary" rounded class="mt-2" @click="back()"
+      <v-btn block color="#dadf74" rounded @click="confirm()">ยืนยัน</v-btn>
+      <v-btn block color="#aabba5" rounded class="mt-2" @click="back()"
         >ย้อนกลับ</v-btn
       >
     </v-form>
