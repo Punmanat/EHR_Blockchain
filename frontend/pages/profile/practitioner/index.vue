@@ -114,7 +114,7 @@ export default {
       this.alert = true;
       setInterval(() => {
         this.alert = false;
-      }, 3000);
+      }, 5000);
     },
     async createAllergy() {
       const status = await this.$store.dispatch(
@@ -129,7 +129,7 @@ export default {
       this.alert = true;
       setInterval(() => {
         this.alert = false;
-      }, 3000);
+      }, 5000);
     },
     async encouter() {
       const status = await this.$store.dispatch(
@@ -144,7 +144,7 @@ export default {
       this.alert = true;
       setInterval(() => {
         this.alert = false;
-      }, 3000);
+      }, 5000);
     },
     async history() {
        const whitelist = await this.$store.dispatch(

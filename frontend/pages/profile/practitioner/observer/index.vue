@@ -63,6 +63,7 @@ export default {
   },
   methods: {
     async confirm() {
+      console.log("In")
       this.observation.issued = new Date();
       this.observation.valueQuantity = {
         value: this.value,
@@ -75,12 +76,12 @@ export default {
         this.alert_success = true;
         setInterval(() => {
           this.alert_success = false;
-        }, 3000);
+        }, 5000);
       } else {
         this.alert_error = true;
         setInterval(() => {
           this.alert_error = false;
-        }, 3000);
+        }, 5000);
       }
     },
     back() {
